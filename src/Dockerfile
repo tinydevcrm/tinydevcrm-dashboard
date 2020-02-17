@@ -7,6 +7,7 @@ RUN apt-get -y upgrade
 
 # Install build dependencies #
 RUN apt-get install -y curl
+RUN apt-get install -y vim
 
 # Install Node.js v13.x
 RUN curl -sSL https://deb.nodesource.com/setup_13.x | bash
