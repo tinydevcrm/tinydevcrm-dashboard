@@ -20,4 +20,9 @@ Tool | Purpose | Notes
 
 ## Licensing
 
+This repository is MIT licensed. See [LICENSE](./LICENSE) for additional
+details.
+
 ## Contributing
+
+TBD
