@@ -3,7 +3,6 @@
 import React from 'react';
 
 import RouteManager from 'core/RouteManager/RouteManager.jsx';
-// import { SignupForm } from '../../components/SignupForm/SignupForm.jsx';
 
 const App = () => (
     <div>
