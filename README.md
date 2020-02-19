@@ -12,7 +12,11 @@ TinyDevCRM administrative dashboard.
 
 Tool | Purpose | Notes
 --- | --- | ---
-[`yarn`](https://yarnpkg.com/) | package manager | chosen over [`npm`](https://www.npmjs.com/) for possible performance, licensing, security, versioning, and build determinism improvements.
+[`yarn`](https://github.com/yarnpkg/yarn) | package manager | chosen over [`npm`](https://www.npmjs.com/) for possible performance, licensing, security, versioning, and build determinism improvements.
+[`react-router`](https://github.com/ReactTraining/react-router) | client-side routing |
+[`antd`](https://github.com/ant-design/ant-design) | UI design and UI component base library |
+[`bootstrap`](https://github.com/twbs/bootstrap) | layout library |
+[`node-sass`](https://github.com/sass/node-sass) | SASS pre-processor | also enables CSS modules like pre-processing
 
 ## Licensing
 
