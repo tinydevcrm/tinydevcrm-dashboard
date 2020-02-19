@@ -2,9 +2,11 @@
 
 import React from 'react';
 
+import { btn } from './SignupForm.module.scss';
+
 
 const SignupForm = () => (
-    <h2>Hi</h2>
+    <h2 className={btn}>Hi</h2>
 )
 
 export default SignupForm;
