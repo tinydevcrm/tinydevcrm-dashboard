@@ -14,17 +14,12 @@ import {
     Route
 } from 'react-router-dom';
 
-// import SignupForm from 'components/SignupForm/SignupForm.jsx';
+import SignupForm from 'components/SignupForm/SignupForm.jsx';
 
 const RouteManager = () => (
     <Switch>
-        <Route exact path='/' component={Dummy} />
+        <Route exact path='/' component={SignupForm} />
     </Switch>
 );
-
-const Dummy = () => (
-    <h1>hi</h1>
-);
-
 
 export default RouteManager;
