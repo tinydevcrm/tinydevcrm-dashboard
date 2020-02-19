@@ -1,13 +1,12 @@
-import React from 'react';
-import { Button } from 'antd';
+// Top-level application component.
 
-import './App.scss';
+import React from 'react';
+
+import { RouteManager } from 'core/RouteManager/RouteManager.jsx';
 
 const App = () => (
-    <div className="App">
-      <Button type="primary">
-        Button
-      </Button>
+    <div>
+        <RouteManager />
     </div>
 )
 
