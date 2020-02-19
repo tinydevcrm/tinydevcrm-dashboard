@@ -16,3 +16,22 @@ what to do when things go wrong.
 >   glitches, and their solutions.
 
 -- Chris Hadfield, *An Astronaut's Guide to Life*.
+
+## 1. CSS styling is global to the entire document
+
+### Problem
+
+Manually de-duplicating CSS class names and ensuring that attributes aren't
+merged, duplicated, or overwritten between components will easily become
+impossible without some form of automation.
+
+### Solution
+
+A few years ago (c. 2017), a co-worker mentioned using
+[**`css-modules`**](https://github.com/css-modules/css-modules), a way in order
+to locally scope all CSS attributes, and let `webpack` dynamically generate
+unique classes for React components for production builds. This automates the
+process of flattening function and block scope for global documents.
+
+I believe SASS modules builds on top of this workflow using
+[`sass`](https://sass-lang.com/), a CSS superset.
