@@ -73,3 +73,24 @@ A number of tools exist in order to test performance. These may include:
 -   A rankings-based performance tool, such as [Google
     Lighthouse](https://github.com/GoogleChrome/lighthouse). This tool (and ones
     like it) should give up-to-date tips on how to improve performance.
+
+## 3. CSS / SCSS styling not showing up after `webpack` compilation
+
+### Problem
+
+When attempting to load SCSS modules for one file, I found that not only was the
+styling not applied correctly, but no errors were raised. I thought the solution
+might have been an incorrect SCSS import, or a misnaming issue, or something
+else entirely.
+
+### Solution
+
+See whether the file comprises alphabetical characters only. This was
+encountered during creation of the "HTTP 401 (Unauthorized) page", where SCSS
+file `401.module.scss` wasn't loaded properly but threw no errors, yet
+`fourZeroOne.module.scss` loaded styling properly.
+
+Misnaming issue went away because I inspected the source on the browser and
+classes were applied correctly. SCSS imports issue concerns went away after I
+could successfully import other SCSS files (using absolute paths) and refer to
+variables from those imported files.
