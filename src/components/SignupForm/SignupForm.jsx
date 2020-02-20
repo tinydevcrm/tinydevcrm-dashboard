@@ -14,16 +14,16 @@ class SignupFormConstructor extends React.Component {
         return (
             <div className={styles.signup_form_constructor}>
                 <Form>
-                    <Form.Item label="email">
+                    <Form.Item label="Email">
                         <Input />
                     </Form.Item>
-                    <Form.Item label="fullName">
+                    <Form.Item label="Full Name">
                         <Input />
                     </Form.Item>
-                    <Form.Item label="password">
+                    <Form.Item label="Password">
                         <Input.Password visibilityToggle={false} />
                     </Form.Item>
-                    <Form.Item label='confirmPassword'>
+                    <Form.Item label='Confirm Password'>
                         <Input.Password visibilityToggle={false} />
                     </Form.Item>
                 </Form>

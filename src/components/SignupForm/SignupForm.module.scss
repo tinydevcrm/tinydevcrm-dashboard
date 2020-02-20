@@ -1,8 +1,10 @@
 @import '~antd/dist/antd.css';
 
+@import 'misc/solarized.scss';
+
 .signup_form_constructor {
     font-size: 20px;
-    background: rgb(199, 23, 23);
+    background: $base03;
     color: white;
     border: none;
 }
