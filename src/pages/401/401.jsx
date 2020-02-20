@@ -2,12 +2,12 @@
 
 import React from 'react';
 
-import styles from './fourZeroOne.module.scss';
+import styles from './_401.module.scss';
 
 
 const FourZeroOne = () => (
-    <div className={styles.wrap}>
-        <h1 className={styles.wrap}>hi</h1>
+    <div className={styles.container}>
+        <h1>hi</h1>
     </div>
 );
 
