@@ -1,0 +1,42 @@
+// HTTP 404 (Not Found) page.
+//
+// Prefixing filename with '_' in order to avoid issue with hooking styling into
+// '.jsx' file. This may have something to do with partial SCSS files:
+// https://stackoverflow.com/a/31319300/1497211
+
+@import 'misc/solarized.scss';
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // Compatibility styling for browsers that don't support 'vh'.
+    //
+    // NOTE: Apparently, 'min-height: 100%' needs to be placed right next to
+    // 'min-height: 100vh' in order for both properties to be recognized as one.
+    min-height: 100%;
+    min-height: 100vh;
+}
+
+.col {
+    text-align: center;
+}
+
+.errorCode {
+    font-size: 4rem;
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1.5rem !important;
+}
+
+.primaryText {
+    margin-bottom: 0.75rem !important;
+    font-size: 1.5rem;
+}
+
+.secondaryText {
+    margin-bottom: 2rem !important;
+    font-size: 1.1rem;
+}
