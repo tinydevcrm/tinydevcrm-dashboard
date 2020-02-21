@@ -94,3 +94,35 @@ Misnaming issue went away because I inspected the source on the browser and
 classes were applied correctly. SCSS imports issue concerns went away after I
 could successfully import other SCSS files (using absolute paths) and refer to
 variables from those imported files.
+
+## 4. `ant-design` styling doesn't appear correctly
+
+### Problem
+
+When `antd` styling is imported into the SCSS file for a given custom-made
+React.js UI component, some portions of the underlying design components for
+`antd` do not appear in the end-result computed CSS styling. For example, a
+`Col` component that has a certain `span` and a certain `offset` attribute drops
+both attributes, and the column spans the entire width of the row and does not
+have any offset.
+
+### Solution
+
+Instead of importing the `antd` CSS file within the `.scss` file:
+
+```scss
+@import '~antd/dist/antd.css';
+```
+
+import the CSS file directly within the `.jsx` file:
+
+```jsx
+import 'antd/dist/antd.css';
+
+import styles from './reactComponent.module.scss';
+```
+
+This is especially important for `antd` layout components like `Row` and `Col`.
+
+Ordering should not matter between importing the CSS and SCSS files. This may be
+an issue with the SCSS processing pipeline eliding certain styling.
