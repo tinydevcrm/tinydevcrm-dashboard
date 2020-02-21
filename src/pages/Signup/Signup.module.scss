@@ -2,11 +2,6 @@
 
 .center {
     width: 100%;
-    // NOTE: I'm really concerned about this attribute. I don't think 'ruby' is
-    // meant to align elements with max widths, from the MDN documentation it
-    // looks more like an internationalization thing. This may mean it's
-    // brittle, subject to change, and / or not browser compatible.
-    display: block ruby;
     flex-direction: row;
     text-align: center;
 }
