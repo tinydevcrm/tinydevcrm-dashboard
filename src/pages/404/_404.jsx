@@ -2,11 +2,11 @@
 
 import React from 'react';
 
-import _ErrorPage from 'pages/_ErrorPage/_ErrorPage.jsx';
+import PartialErrorPage from 'pages/PartialErrorPage/PartialErrorPage.jsx';
 
 
 const _404 = () => (
-    <_ErrorPage
+    <PartialErrorPage
         errorCode={'404'}
         primaryText={'Oops.. You just found an error page..'}
         secondaryText={'We are sorry but our service is currently not available..'} />

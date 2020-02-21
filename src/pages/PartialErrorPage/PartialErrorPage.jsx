@@ -1,4 +1,4 @@
-// Generic error page (mostly for HTTP errors).
+// Partial (generic) error page (mostly for HTTP errors).
 //
 // Props include:
 // - errorCode
@@ -14,10 +14,10 @@ import {
 import PageCenterWrapper from 'components/PageCenterWrapper/PageCenterWrapper.jsx';
 
 import 'antd/dist/antd.css';
-import styles from './_ErrorPage.module.scss';
+import styles from './PartialErrorPage.module.scss';
 
 
-const _ErrorPage = (props) => (
+const PartialErrorPage = (props) => (
     <PageCenterWrapper>
         <div className={styles.errorCode}>
             {props.errorCode}
@@ -35,4 +35,4 @@ const _ErrorPage = (props) => (
     </PageCenterWrapper>
 );
 
-export default _ErrorPage;
+export default PartialErrorPage;
