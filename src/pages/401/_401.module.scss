@@ -6,6 +6,8 @@
 
 @import 'misc/solarized.scss';
 
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+
 .container {
     display: flex;
     flex-direction: column;
@@ -18,11 +20,23 @@
     min-height: 100vh;
 }
 
-.row {
-    background-color: red;
+.col {
+    text-align: center;
 }
 
-.col {
-    background-color: turquoise;
-    text-align: center;
+.errorCode {
+    font-size: 4rem;
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1.5rem !important;
+}
+
+.primaryText {
+    margin-bottom: 0.75rem !important;
+    font-size: 1.5rem;
+}
+
+.secondaryText {
+    margin-bottom: 2rem !important;
+    font-size: 1.1rem;
 }
