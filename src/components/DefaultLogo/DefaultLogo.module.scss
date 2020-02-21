@@ -1,1 +1,16 @@
 // Default logo.
+
+@import 'misc/solarized.scss';
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono|Ubuntu&display=swap');
+
+
+.defaultLogo {
+    font-size: 3rem;
+    font-family: 'Ubuntu', 'Arial', sans-serif;
+    font-weight: 800;
+    color: $cyan;
+
+    // Make <div> fit inner content
+    display: inline-block;
+}

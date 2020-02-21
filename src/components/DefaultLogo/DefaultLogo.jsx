@@ -4,3 +4,15 @@
 // do for now.
 
 import React from 'react';
+
+import styles from './DefaultLogo.module.scss';
+
+
+const DefaultLogo = () => (
+    <div className={styles.defaultLogo}>
+        TinyDevCRM
+    </div>
+);
+
+
+export default DefaultLogo;
