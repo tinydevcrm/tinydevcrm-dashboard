@@ -44,7 +44,13 @@ class SignupForm extends React.Component {
                 <input type="password" className={passwordStyling} />
 
                 <div className={styles.centered}>
-                    <input type="submit" value="Sign Up" className={styles.submitButton}></input>
+                    <Button
+                        htmlType={"submit"}
+                        type="primary"
+                        className={styles.submitButton}
+                        size={"large"}>
+                            Sign Up
+                    </Button>
                 </div>
             </form>
         )
