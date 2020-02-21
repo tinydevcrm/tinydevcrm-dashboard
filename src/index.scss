@@ -12,6 +12,8 @@ code {
     monospace;
 }
 
-h1 h2 h3 h4 h5 h6 p {
+// Use comma-separated list in order to split attribution to multiple classes:
+// https://stackoverflow.com/a/7539138/1497211
+h1, h2, h3, h4, h5, h6, p {
     margin: 0;
 }
