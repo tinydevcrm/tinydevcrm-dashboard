@@ -1,0 +1,28 @@
+// Generic error page (mostly for HTTP errors).
+//
+// NOTE: When developing SCSS files for HTTP error pages (e.g. HTTP 404), I
+// found that prefixing filename with '_' avoids problem w.r.t. hooking
+// styling into '.jsx' file. This may have something to do with partial SCSS
+// files: https://stackoverflow.com/a/31319300/1497211
+//
+// Since this page begins with an alphabetical letter, the '_' prefix isn't
+// strictly necessary. This is mostly for indicating this is a partial page, and
+// not a direct page.
+
+
+.errorCode {
+    font-size: 4rem;
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1.5rem !important;
+}
+
+.primaryText {
+    margin-bottom: 0.75rem !important;
+    font-size: 1.5rem;
+}
+
+.secondaryText {
+    margin-bottom: 2rem !important;
+    font-size: 1.1rem;
+}
