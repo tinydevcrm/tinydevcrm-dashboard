@@ -3,8 +3,23 @@
 // Prefixing filename with '_' in order to avoid issue with hooking styling into
 // '.jsx' file. This may have something to do with partial SCSS files:
 // https://stackoverflow.com/a/31319300/1497211
+
+@import '~antd/dist/antd.css';
+
 @import 'misc/solarized.scss';
 
 .container {
     background-color: red;
+}
+
+.tag {
+    background-color: blue;
+}
+
+.row {
+    background-color: green;
+}
+
+.col {
+    background-color: turquoise;
 }
