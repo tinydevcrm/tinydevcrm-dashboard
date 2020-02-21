@@ -1,0 +1,23 @@
+// This "page center wrapper" is a "wrapper" (higher order component) to center
+// some content both horizontally and vertically in a given viewport.
+//
+// This involves using 'Row' and 'Col' components of the Ant Design library, and
+// applying custom offsets for mobile responsiveness.
+//
+// This component may be used by error and authentication pages / workflows.
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // Compatibility styling for browsers that don't support 'vh'.
+    //
+    // NOTE: Apparently, 'min-height: 100%' needs to be placed right next to
+    // 'min-height: 100vh' in order for both properties to be recognized as one.
+    min-height: 100%;
+    min-height: 100vh;
+}
+
+.col {
+    text-align: center;
+}
