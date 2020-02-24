@@ -8,8 +8,8 @@ import PartialErrorPage from 'pages/PartialErrorPage/PartialErrorPage.jsx';
 const _404 = () => (
     <PartialErrorPage
         errorCode={'404'}
-        primaryText={'Oops.. You just found an error page..'}
-        secondaryText={'We are sorry but our service is currently not available..'} />
+        primaryText={'The page you requested cannot be found.'}
+        secondaryText={'The URL may be misspelled or the page you are looking for is no longer available.'} />
 );
 
 export default _404;
