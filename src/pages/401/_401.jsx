@@ -8,8 +8,8 @@ import PartialErrorPage from 'pages/PartialErrorPage/PartialErrorPage.jsx';
 const _401 = () => (
     <PartialErrorPage
         errorCode={'401'}
-        primaryText={'Oops.. You just found an error page..'}
-        secondaryText={'We are sorry but our service is currently not available..'} />
+        primaryText={'You are not authorized to access this page.'}
+        secondaryText={'Please log in or contact the site administrator.'} />
 );
 
 export default _401;
