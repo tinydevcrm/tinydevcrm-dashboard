@@ -1,1 +1,69 @@
 // Login form.
+
+@import 'misc/solarized.scss';
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+
+
+.container {
+    flex-grow: 1;
+    padding: 20px;
+    padding-bottom: 1.5rem;
+
+    border-radius: 20px;
+
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+    -webkit-box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+    -moz-box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+
+    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+}
+
+.formTitle {
+    // NOTE: Don't use 'vw' since that defines width for global viewport.
+    width: 100%;
+    display: block;
+    text-align: center !important;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.formInputLabel {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+    font-weight: 800;
+    text-align: left;
+}
+
+.formInput {
+    width: 100%;
+    padding: 5px 10px;
+    margin-bottom: 0.7rem;
+    display: block;
+    font-size: 1.1rem;
+
+    // NOTE: For some reason, input form type from 'email' to either 'text' or
+    // 'password' will change the styling of the form. Set this instead of
+    // border in order to change color opacity.
+    border-top-color: rgba(134, 140, 151, 0.1);
+    border-bottom-color: rgba(134, 140, 151, 0.1);
+    border-left-color: rgba(134, 140, 151, 0.1);
+    border-right-color: rgba(134, 140, 151, 0.1);
+    border-radius: 3px;
+}
+
+.formPasswordInput {
+    letter-spacing: 4px;
+}
+
+.centered {
+    width: 100%;
+    text-align: center;
+}
+
+.submitButton {
+    margin-top: 1rem;
+    width: 50%;
+    font-size: 1.2rem;
+}

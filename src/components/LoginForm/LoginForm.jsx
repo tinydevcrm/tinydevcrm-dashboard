@@ -18,7 +18,31 @@ const passwordStyling = classnames(
 class LoginForm extends React.Component {
     render() {
         return (
-            <div>hi</div>
+            <form className={styles.container}>
+                <label className={styles.formTitle}>
+                    Log In
+                </label>
+
+                <label className={styles.formInputLabel}>
+                    Email
+                </label>
+                <input type="email" className={styles.formInput} />
+
+                <label className={styles.formInputLabel}>
+                    Password
+                </label>
+                <input type="password" className={passwordStyling} />
+
+                <div className={styles.centered}>
+                    <Button
+                        htmlType={"submit"}
+                        type="primary"
+                        className={styles.submitButton}
+                        size={"large"}>
+                        Log In
+                    </Button>
+                </div>
+            </form>
         )
     }
 }
