@@ -18,11 +18,15 @@ import DashboardBase from 'components/DashboardBase/DashboardBase.jsx';
 import _401 from 'pages/401/_401.jsx';
 import _404 from 'pages/404/_404.jsx';
 import Signup from 'pages/Signup/Signup.jsx';
-
+import DefaultLogo from 'components/DefaultLogo/DefaultLogo.jsx';
+import Login from 'pages/Login/Login.jsx';
 
 const RouteManager = () => (
     <Switch>
         <Route exact path='/' component={Signup} />
+        <Route exact path='/logo' component={DefaultLogo} />
+        <Route exact path='/signup' component={Signup} />
+        <Route exact path='/login' component={Login} />
         <Route exact path='/dashboard' component={DashboardBase} />
         <Route exact path='/401' component={_401} />
         <Route exact path='/404' component={_404} />
