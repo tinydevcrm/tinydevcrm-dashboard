@@ -4,4 +4,11 @@
     width: 100%;
     flex-direction: row;
     text-align: center;
+    align-items: center;
+}
+
+.text {
+    margin-top: 2vw;
+    // border: 10px solid black;
+    font-size: 1rem;
 }
