@@ -11,7 +11,8 @@
 import React from 'react';
 import {
     Switch,
-    Route
+    Route,
+    Redirect
 } from 'react-router-dom';
 
 import DashboardBase from 'components/DashboardBase/DashboardBase.jsx';
@@ -23,7 +24,10 @@ import Login from 'pages/Login/Login.jsx';
 
 const RouteManager = () => (
     <Switch>
-        <Route exact path='/' component={Signup} />
+        {/* TODO: Redirect from base route should be done based on authentication. If the user is not logged in, they should be redirected to the login page. If the user is logged in, they should be redirected to the dashboard. */}
+        <Route exact path='/'>
+            <Redirect to="/login" />
+        </Route>
         <Route exact path='/logo' component={DefaultLogo} />
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/login' component={Login} />
