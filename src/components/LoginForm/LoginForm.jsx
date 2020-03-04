@@ -6,6 +6,8 @@ import {
 } from 'antd';
 import classnames from 'classnames';
 
+import axiosInstance from 'api/axios.js';
+
 import 'antd/dist/antd.css';
 import styles from './LoginForm.module.scss';
 
@@ -33,8 +35,28 @@ class LoginForm extends React.Component {
         });
     }
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
         event.preventDefault();
+        try {
+            const response = await axiosInstance.post(
+                '/token/obtain/',
+                {
+                    // TODO: Convert token acquisition process from using a
+                    // "username" to "email". Emails conform to IETF RFC-5322,
+                    // whereas "usernames" do not have any kind of
+                    // specification.
+                    username: this.state.email,
+                    password: this.state.password
+                }
+            );
+            axiosInstance.defaults.headers['Authorization'] = 'JWT ' + response.data.access;
+            localStorage.setItem('access_token', response.data.access);
+            localStorage.setItem('refresh_token', response.data.refresh);
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
     }
 
     render() {
