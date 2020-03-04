@@ -22,6 +22,8 @@ import Signup from 'pages/Signup/Signup.jsx';
 import DefaultLogo from 'components/DefaultLogo/DefaultLogo.jsx';
 import Login from 'pages/Login/Login.jsx';
 
+import ProtectedResourceTest from 'components/ProtectedResourceTest/ProtectedResourceTest.jsx';
+
 const RouteManager = () => (
     <Switch>
         {/* TODO: Redirect from base route should be done based on authentication. If the user is not logged in, they should be redirected to the login page. If the user is logged in, they should be redirected to the dashboard. */}
@@ -34,6 +36,7 @@ const RouteManager = () => (
         <Route exact path='/dashboard' component={DashboardBase} />
         <Route exact path='/401' component={_401} />
         <Route exact path='/404' component={_404} />
+        <Route exact path='/dummy' component={ProtectedResourceTest} />
     </Switch>
 );
 
