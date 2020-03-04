@@ -16,9 +16,32 @@ const passwordStyling = classnames(
 )
 
 class LoginForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: "",
+            password: ""
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+    }
+
     render() {
         return (
-            <form className={styles.container}>
+            <form
+                className={styles.container}
+                onSubmit={this.handleSubmit}>
                 <label className={styles.formTitle}>
                     Log In
                 </label>
@@ -26,12 +49,22 @@ class LoginForm extends React.Component {
                 <label className={styles.formInputLabel}>
                     Email
                 </label>
-                <input type="email" className={styles.formInput} />
+                <input
+                    name="email"
+                    type="email"
+                    className={styles.formInput}
+                    value={this.state.email}
+                    onChange={this.handleChange} />
 
                 <label className={styles.formInputLabel}>
                     Password
                 </label>
-                <input type="password" className={passwordStyling} />
+                <input
+                    name="password"
+                    type="password"
+                    className={passwordStyling}
+                    value={this.state.password}
+                    onChange={this.handleChange} />
 
                 <div className={styles.centered}>
                     <Button
