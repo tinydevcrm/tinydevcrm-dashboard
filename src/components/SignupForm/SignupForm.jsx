@@ -8,6 +8,7 @@ import classnames from 'classnames';
 
 import 'antd/dist/antd.css';
 import styles from './SignupForm.module.scss';
+import axiosInstance from 'api/axios';
 
 
 const passwordStyling = classnames(
@@ -35,8 +36,23 @@ class SignupForm extends React.Component {
         });
     }
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
         event.preventDefault();
+        try {
+            const response = await axiosInstance.post(
+                '/user/create/',
+                {
+                    // TODO: Change username to 'fullName' in the backend, in
+                    // order to match fields properly.
+                    username: this.state.fullName,
+                    email: this.state.email,
+                    password: this.state.password
+                }
+            );
+            return response;
+        } catch (error) {
+            console.log(error.stack);
+        }
     }
 
     render() {
