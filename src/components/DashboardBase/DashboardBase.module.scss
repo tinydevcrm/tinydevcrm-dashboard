@@ -2,6 +2,10 @@
 
 @import 'misc/solarized.scss';
 
+.container {
+    height: 100vh;
+}
+
 .logo {
     height: 32px;
     background: rgba(255, 255, 255, 0.2);

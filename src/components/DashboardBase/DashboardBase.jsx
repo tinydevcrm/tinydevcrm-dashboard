@@ -14,9 +14,13 @@ import styles from './DashboardBase.module.scss';
 const { Header, Sider, Content } = Layout;
 
 class SiderDemo extends React.Component {
-    state = {
-        collapsed: false,
-    };
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            collapsed: false,
+        };
+    }
 
     toggle = () => {
         this.setState({
@@ -26,7 +30,7 @@ class SiderDemo extends React.Component {
 
     render() {
         return (
-            <Layout>
+            <Layout className={styles.container}>
                 <Sider
                     trigger={null}
                     collapsible
@@ -49,7 +53,7 @@ class SiderDemo extends React.Component {
                     </Header>
                     <Content
                         style={{margin: '24px 16px', padding: 24, background: '#fff', minHeight: 200}}>
-                        Content
+                        {this.props.children}
                     </Content>
                 </Layout>
             </Layout>
