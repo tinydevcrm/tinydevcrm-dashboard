@@ -23,6 +23,7 @@ import DefaultLogo from 'components/DefaultLogo/DefaultLogo.jsx';
 import Login from 'pages/Login/Login.jsx';
 
 import ProtectedResourceTest from 'components/ProtectedResourceTest/ProtectedResourceTest.jsx';
+import LogoutTest from 'components/LogoutTest/LogoutTest.jsx';
 
 const RouteManager = () => (
     <Switch>
@@ -37,6 +38,7 @@ const RouteManager = () => (
         <Route exact path='/401' component={_401} />
         <Route exact path='/404' component={_404} />
         <Route exact path='/dummy' component={ProtectedResourceTest} />
+        <Route exact path='/logout' component={LogoutTest} />
     </Switch>
 );
 
