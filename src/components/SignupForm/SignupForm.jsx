@@ -23,7 +23,8 @@ class SignupForm extends React.Component {
             email: "",
             fullName: "",
             password: "",
-            passwordConfirm: ""
+            passwordConfirm: "",
+            errors: {}
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -36,6 +37,8 @@ class SignupForm extends React.Component {
         });
     }
 
+    // TODO: Add some basic front-end validation to confirm that the
+    // passwordConfirm is the same before enabling the submit button.
     async handleSubmit(event) {
         event.preventDefault();
         try {
@@ -52,6 +55,9 @@ class SignupForm extends React.Component {
             return response;
         } catch (error) {
             console.log(error.stack);
+            this.setState({
+                errors: error.response.data
+            })
         }
     }
 
@@ -103,6 +109,9 @@ class SignupForm extends React.Component {
                     className={passwordStyling}
                     value={this.state.passwordConfirm}
                     onChange={this.handleChange} />
+
+                // TODO: Possibly remove this, or keep and add some styling for error messages
+                { this.state.errors.password ? this.state.errors.password : null }
 
                 <div className={styles.centered}>
                     <Button
