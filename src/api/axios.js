@@ -17,6 +17,10 @@ const axiosInstance = axios.create({
 // Handle JWT access token auto-refresh based on liveness of JWT refresh token.
 // I'm guessing that it intercepts existing requests, and if they fail due to
 // 401 unauthorized
+//
+// TODO: After blacklisting a JWT token, protected routes retry
+// /api/token/refresh infinitely many times. If the refresh token doesn't exist,
+// then issue a 301 redirect to a non-protected page like Login instead.
 axiosInstance.interceptors.response.use(
     response => response,
     error => {
