@@ -2,6 +2,7 @@
 
 import React from 'react';
 import {
+    Alert,
     Button
 } from 'antd';
 import classnames from 'classnames';
@@ -60,6 +61,19 @@ class SignupForm extends React.Component {
     }
 
     render() {
+        const passwordsMatch = (
+            this.state.passwordConfirm &&
+            (
+                this.state.password === this.state.passwordConfirm
+            )
+        )
+
+        const canSubmitForm = (
+            this.state.email &&
+            this.state.fullName &&
+            passwordsMatch
+        )
+
         return (
             <form
                 className={styles.container}
@@ -108,14 +122,19 @@ class SignupForm extends React.Component {
                     value={this.state.passwordConfirm}
                     onChange={this.handleChange} />
 
-                // TODO: Possibly remove this, or keep and add some styling for error messages
-                { this.state.errors.password ? this.state.errors.password : null }
+                {
+                    !!!passwordsMatch &&
+                    <Alert
+                        message="Confirm password"
+                        type="error" />
+                }
 
                 <div className={styles.centered}>
                     <Button
                         htmlType={"submit"}
                         type="primary"
                         className={styles.submitButton}
+                        disabled={!!!canSubmitForm}
                         size={"large"}>
                             Sign Up
                     </Button>
