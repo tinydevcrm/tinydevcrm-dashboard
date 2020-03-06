@@ -2,6 +2,9 @@
 
 import React from 'react';
 import {
+    Redirect
+} from 'react-router-dom';
+import {
     Button
 } from 'antd';
 import classnames from 'classnames';
@@ -22,7 +25,8 @@ class LoginForm extends React.Component {
         super(props);
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            fireRedirect: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -49,7 +53,9 @@ class LoginForm extends React.Component {
             localStorage.setItem('access_token', response.data.access);
             localStorage.setItem('refresh_token', response.data.refresh);
 
-            return response;
+            this.setState({
+                fireRedirect: true
+            })
         } catch (error) {
             throw error;
         }
@@ -92,6 +98,11 @@ class LoginForm extends React.Component {
                         size={"large"}>
                         Log In
                     </Button>
+                    {
+                        this.state.fireRedirect && (
+                            <Redirect to='/dashboard' />
+                        )
+                    }
                 </div>
             </form>
         )
