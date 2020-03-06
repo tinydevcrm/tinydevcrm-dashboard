@@ -43,13 +43,11 @@ class SignupForm extends React.Component {
         event.preventDefault();
         try {
             const response = await axiosInstance.post(
-                '/user/create/',
+                '/v1/auth/users/register/',
                 {
-                    // TODO: Change username to 'fullName' in the backend, in
-                    // order to match fields properly.
-                    username: this.state.fullName,
-                    email: this.state.email,
-                    password: this.state.password
+                    'primary_email': this.state.email,
+                    'full_name': this.state.fullName,
+                    'password': this.state.password
                 }
             );
             return response;
