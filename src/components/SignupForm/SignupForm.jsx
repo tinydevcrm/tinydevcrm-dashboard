@@ -42,7 +42,7 @@ class SignupForm extends React.Component {
     async handleSubmit(event) {
         event.preventDefault();
         try {
-            const response = await axiosInstance.post(
+            const signupResponse = await axiosInstance.post(
                 '/v1/auth/users/register/',
                 {
                     'primary_email': this.state.email,
@@ -50,7 +50,24 @@ class SignupForm extends React.Component {
                     'password': this.state.password
                 }
             );
-            return response;
+            const loginResponse = await axiosInstance.post(
+                '/v1/auth/tokens/obtain/',
+                {
+                    'primary_email': this.state.email,
+                    'password': this.state.password
+                }
+            )
+            axiosInstance.defaults.headers['Authorization'] = 'JWT ' + loginResponse.data.access;
+            localStorage.setItem(
+                'access_token',
+                loginResponse.data.access
+            );
+            localStorage.setItem(
+                'refresh_token',
+                loginResponse.data.refresh
+            );
+
+            return (signupResponse, loginResponse);
         } catch (error) {
             console.log(error.stack);
             this.setState({
@@ -107,9 +124,6 @@ class SignupForm extends React.Component {
                     className={passwordStyling}
                     value={this.state.passwordConfirm}
                     onChange={this.handleChange} />
-
-                // TODO: Possibly remove this, or keep and add some styling for error messages
-                { this.state.errors.password ? this.state.errors.password : null }
 
                 <div className={styles.centered}>
                     <Button
