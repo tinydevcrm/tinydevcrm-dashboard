@@ -39,14 +39,10 @@ class LoginForm extends React.Component {
         event.preventDefault();
         try {
             const response = await axiosInstance.post(
-                '/token/obtain/',
+                '/v1/auth/tokens/obtain/',
                 {
-                    // TODO: Convert token acquisition process from using a
-                    // "username" to "email". Emails conform to IETF RFC-5322,
-                    // whereas "usernames" do not have any kind of
-                    // specification.
-                    username: this.state.email,
-                    password: this.state.password
+                    'primary_email': this.state.email,
+                    'password': this.state.password
                 }
             );
             axiosInstance.defaults.headers['Authorization'] = 'JWT ' + response.data.access;
