@@ -3,10 +3,6 @@
 export APP_VERSION ?= $(shell git rev-parse --short HEAD)
 export GIT_REPO_ROOT ?= $(shell git rev-parse --show-toplevel)
 
-DOCKER_IMAGE_NAME='tinydevcrm-dashboard'
-DOCKER_IMAGE_VERSION='latest'
-DOCKER_CONTAINER_NAME='tinydevcrm-dashboard'
-
 version:
 	@ echo '{"Version": "$(APP_VERSION)"}'
 
@@ -14,18 +10,11 @@ version:
 # calls will be towards the development version of the API on assumed host
 # ports: https://github.com/tinydevcrm-backend
 dev-up:
-	docker build $(GIT_REPO_ROOT) \
-		--file $(GIT_REPO_ROOT)/development.Dockerfile \
-		--tag $(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_VERSION)
-	docker run \
-		-it \
-		--rm \
-		--network=host \
-		--volume=$(GIT_REPO_ROOT):/app \
-		--volume /app/node_modules \
-		$(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_VERSION)
+	GIT_REPO_ROOT=$(GIT_REPO_ROOT) docker-compose -f $(GIT_REPO_ROOT)/infra-dev/docker-compose.development.yaml --verbose up -d --build
 
 dev-down:
+	docker-compose -f ${GIT_REPO_ROOT}/infra-dev/docker-compose.development.yaml down -v
+	docker images -q -f dangling=true -f label=application=tinydevcrm-dashboard | xargs -I ARGS docker rmi -f --no-prune ARGS
 
 prod-up:
 

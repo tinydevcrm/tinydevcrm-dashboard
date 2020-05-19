@@ -4,6 +4,7 @@
 
 # Pull official base image
 FROM node:12.16.3-alpine3.11
+LABEL application="tinydevcrm-dashboard"
 
 # Set working directory
 WORKDIR /app
