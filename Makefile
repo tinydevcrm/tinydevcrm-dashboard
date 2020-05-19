@@ -10,7 +10,7 @@ version:
 # calls will be towards the development version of the API on assumed host
 # ports: https://github.com/tinydevcrm-backend
 dev-up:
-	GIT_REPO_ROOT=$(GIT_REPO_ROOT) docker-compose -f $(GIT_REPO_ROOT)/infra-dev/docker-compose.development.yaml --verbose up -d --build
+	GIT_REPO_ROOT=$(GIT_REPO_ROOT) docker-compose -f $(GIT_REPO_ROOT)/infra-dev/docker-compose.development.yaml --verbose run --service-ports client
 
 dev-down:
 	docker-compose -f ${GIT_REPO_ROOT}/infra-dev/docker-compose.development.yaml down -v
