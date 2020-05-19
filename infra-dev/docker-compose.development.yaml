@@ -1,0 +1,19 @@
+# From: https://mherman.org/blog/dockerizing-a-react-app/
+
+version: '3.7'
+
+services:
+  client:
+    build:
+      context: ${GIT_REPO_ROOT}
+      dockerfile: development.Dockerfile
+    volumes:
+      - ${GIT_REPO_ROOT}:/app
+      - /app/node_modules
+    ports:
+      - 3001:3000
+    environment:
+        # This is
+        - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
+    tty: true
