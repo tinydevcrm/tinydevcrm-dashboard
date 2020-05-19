@@ -1,0 +1,11 @@
+# From: https://mherman.org/blog/dockerizing-a-react-app/
+
+version: '3.7'
+
+services:
+  client:
+    build:
+      context: ${GIT_REPO_ROOT}
+      dockerfile: production.Dockerfile
+    ports:
+      - 1337:80
