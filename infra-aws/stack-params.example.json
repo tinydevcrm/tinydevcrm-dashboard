@@ -1,0 +1,10 @@
+[
+    {
+        "ParameterKey": "S3BucketURI",
+        "ParameterValue": "$MY_S3_BUCKET_URI"
+    },
+    {
+        "ParameterKey": "CustomAcmCertificateArn",
+        "ParameterValue": "$MY_CUSTOM_AWS_CERTIFICATE_MANAGER_CERTIFICATE_ARN"
+    }
+]
