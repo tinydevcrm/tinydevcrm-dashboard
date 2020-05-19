@@ -93,6 +93,13 @@ make prod-up
 make prod-copyfiles
 ```
 
+### Creating an AWS CloudFormation stack and deploying files remotely
+
+```bash
+make create-stack
+make deploy-content
+```
+
 ### Toolchain
 
 Tool | Purpose | Notes
