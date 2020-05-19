@@ -25,7 +25,6 @@ prod-up:
 # commits.
 # TODO: Figure out how to change ownership of Docker volume for build/ directory
 # to avoid having to use `sudo rm -rf` on host.
-export HOSTUSER ?= $(shell whoami)
 prod-copyfiles:
 	GIT_REPO_ROOT=$(GIT_REPO_ROOT) docker-compose -f $(GIT_REPO_ROOT)/infra-aws/docker-compose.production.yaml --verbose up -d --build copier
 	GIT_REPO_ROOT=$(GIT_REPO_ROOT) docker-compose -f $(GIT_REPO_ROOT)/infra-aws/docker-compose.production.yaml exec copier npm run build
@@ -34,10 +33,34 @@ prod-down:
 	GIT_REPO_ROOT=$(GIT_REPO_ROOT) docker-compose -f $(GIT_REPO_ROOT)/infra-aws/docker-compose.production.yaml down -v
 	docker images -q -f dangling=true -f label=application=tinydevcrm-dashboard-prod | xargs -I ARGS docker rmi -f --no-prune ARGS
 
+export AWS_STACK_NAME ?= tinydevcrm-dashboard
+
 create-stack:
+	# Copy infra-aws/stack-params.example.json to infra-aws/stack-params.json
+	# and replace parameters.
+	#
+	# Change AWS CloudFormation stack name and AWS IAM profile as need be.
+	# Default is generated from `tinydevcrm-backend`.
+	aws cloudformation create-stack \
+		--stack-name $(AWS_STACK_NAME) \
+		--template-body file://infra-aws/stack.yaml \
+		--parameters file://infra-aws/stack-params.json \
+		--capabilities CAPABILITY_NAMED_IAM \
+		--profile tinydevcrm-user
 
 update-stack:
+	aws cloudformation deploy \
+		--stack-name $(AWS_STACK_NAME) \
+		--template-file $(GIT_REPO_ROOT)/infra-aws/stack.yaml \
+		--capabilities CAPABILITY_NAMED_IAM \
+		--profile tinydevcrm-user
 
 terminate-stack:
+	aws cloudformation delete-stack \
+		--stack-name $(AWS_STACK_NAME) \
+		--profile tinydevcrm-user
 
+# Change $S3_BUCKET_URI as needed.
+export S3_BUCKET_URI ?= dashboard.tinydevcrm.com
 deploy-content: prod-copyfiles
+	aws s3 sync ./build s3://$(S3_BUCKET_URI) --profile tinydevcrm-user
