@@ -8,7 +8,7 @@ TinyDevCRM administrative dashboard.
 
 ## Build Requirements
 
-Make sure you have
+For best results, make sure you have
 [`tinydevcrm-backend`](https://github.com/tinydevcrm/tinydevcrm-backend)
 installed and running.
 
@@ -17,16 +17,30 @@ installed and running.
 ```bash
 git clone https://tinydevcrm/tinydevcrm-dashboard
 cd tinydevcrm-dashboard
-make dev-up
+make dev-run
 ```
 
-## Create a production build
+## Overview
+
+## Other Commands
+
+### Running tests on development
+
+```make
+make runcmd npm test
+```
+
+### Create a production build and serving files
 
 ```bash
 make prod-up
 ```
 
-## Overview
+### Creating a production build with files hosted locally
+
+```bash
+make prod-copyfiles
+```
 
 ### Toolchain
 
