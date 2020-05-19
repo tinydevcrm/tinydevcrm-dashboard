@@ -27,7 +27,7 @@ endif
 #
 # Usage:
 # - 'make runcmd npm test'
-# - 'make
+# - 'make runcmd yarn add $PACKAGE', will show up on local
 #
 runcmd: dev-up
 	docker exec -it infra-dev_client_1 ${RUN_ARGS}
