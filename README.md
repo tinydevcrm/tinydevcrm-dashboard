@@ -20,6 +20,12 @@ cd tinydevcrm-dashboard
 make dev-up
 ```
 
+## Create a production build
+
+```bash
+make prod-up
+```
+
 ## Overview
 
 ### Toolchain
