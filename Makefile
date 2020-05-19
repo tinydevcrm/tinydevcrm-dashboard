@@ -25,13 +25,14 @@ prod-up:
 # commits.
 # TODO: Figure out how to change ownership of Docker volume for build/ directory
 # to avoid having to use `sudo rm -rf` on host.
-prod-copyfiles:
+prod-copyfiles: prod-up
 	GIT_REPO_ROOT=$(GIT_REPO_ROOT) docker-compose -f $(GIT_REPO_ROOT)/infra-aws/docker-compose.production.yaml --verbose up -d --build copier
 	GIT_REPO_ROOT=$(GIT_REPO_ROOT) docker-compose -f $(GIT_REPO_ROOT)/infra-aws/docker-compose.production.yaml exec copier npm run build
 
 prod-down:
 	GIT_REPO_ROOT=$(GIT_REPO_ROOT) docker-compose -f $(GIT_REPO_ROOT)/infra-aws/docker-compose.production.yaml down -v
 	docker images -q -f dangling=true -f label=application=tinydevcrm-dashboard-prod | xargs -I ARGS docker rmi -f --no-prune ARGS
+	docker images -q -f dangling=true -f label=application=tinydevcrm-dashboard-copier | xargs -I ARGS docker rmi -f --no-prune ARGS
 
 export AWS_STACK_NAME ?= tinydevcrm-dashboard
 
