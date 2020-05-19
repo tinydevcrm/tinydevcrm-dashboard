@@ -1,10 +1,24 @@
-# `dashboard.tinydevcrm.com`: TinyDevCRM's administrative dashboard
+# `dashboard.tinydevcrm.com`: TinyDevCRM admin dashboard
 
-This README intends to act as the [living
-document](https://en.wikipedia.org/wiki/Living_document) for creating the
+This README intends to act as a [living
+document](https://en.wikipedia.org/wiki/Living_document) for documenting the
 TinyDevCRM administrative dashboard.
 
+## System Requirements
+
+## Build Requirements
+
+Make sure you have
+[`tinydevcrm-backend`](https://github.com/tinydevcrm/tinydevcrm-backend)
+installed and running.
+
 ## Getting Started
+
+```bash
+git clone https://tinydevcrm/tinydevcrm-dashboard
+cd tinydevcrm-dashboard
+make dev-up
+```
 
 ## Overview
 
@@ -20,9 +34,4 @@ Tool | Purpose | Notes
 
 ## Licensing
 
-This repository is MIT licensed. See [LICENSE](./LICENSE) for additional
-details.
-
-## Contributing
-
-TBD
+See [LICENSE](LICENSE).
