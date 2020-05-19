@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: "2010-09-09"
 
-Description: "AWS CloudFormation deployment of static website resources. Taken from https://github.com/NickolasHKraus/cloudformation-templates/blob/master/static-website-hugo/template.yaml."
+Description: "AWS CloudFormation deployment of TinyDevCRM admin dashboard. Taken from https://github.com/NickolasHKraus/cloudformation-templates/blob/master/static-website-hugo/template.yaml."
 
 Parameters:
   CNAMEURI:
