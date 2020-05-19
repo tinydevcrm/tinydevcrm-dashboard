@@ -9,8 +9,28 @@ version:
 # Make sure you have an instance of `tinydevcrm-backend` up and running, as API
 # calls will be towards the development version of the API on assumed host
 # ports: https://github.com/tinydevcrm-backend
-dev-up:
+dev-run:
 	GIT_REPO_ROOT=$(GIT_REPO_ROOT) docker-compose -f $(GIT_REPO_ROOT)/infra-dev/docker-compose.development.yaml --verbose run --service-ports client
+
+dev-up:
+	GIT_REPO_ROOT=$(GIT_REPO_ROOT) docker-compose -f $(GIT_REPO_ROOT)/infra-dev/docker-compose.development.yaml --verbose up -d --build
+
+# FROM: https://stackoverflow.com/a/14061796
+#
+# If the first argument is "runcmd"...
+ifeq (runcmd,$(firstword $(MAKECMDGOALS)))
+  # use the rest as arguments for "runcmd"
+  RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+  # ...and turn them into do-nothing targets
+  $(eval $(RUN_ARGS):;@:)
+endif
+#
+# Usage:
+# - 'make runcmd npm test'
+# - 'make
+#
+runcmd: dev-up
+	docker exec -it infra-dev_client_1 ${RUN_ARGS}
 
 dev-down:
 	GIT_REPO_ROOT=$(GIT_REPO_ROOT) docker-compose -f ${GIT_REPO_ROOT}/infra-dev/docker-compose.development.yaml down -v
