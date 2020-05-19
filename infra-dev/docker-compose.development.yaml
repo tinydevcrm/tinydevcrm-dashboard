@@ -11,7 +11,7 @@ services:
       - ${GIT_REPO_ROOT}:/app
       - /app/node_modules
     ports:
-      - 3001:3000
+      - 3000:3000
     environment:
         # This is
         - CHOKIDAR_USEPOLLING=true
