@@ -17,9 +17,17 @@ dev-down:
 	docker images -q -f dangling=true -f label=application=tinydevcrm-dashboard | xargs -I ARGS docker rmi -f --no-prune ARGS
 
 prod-up:
-	GIT_REPO_ROOT=$(GIT_REPO_ROOT) docker-compose -f $(GIT_REPO_ROOT)/infra-aws/docker-compose.production.yaml --verbose up -d --build
+	GIT_REPO_ROOT=$(GIT_REPO_ROOT) docker-compose -f $(GIT_REPO_ROOT)/infra-aws/docker-compose.production.yaml --verbose up -d --build client
 	sleep 5
-	xdg-open http://localhost:5000
+	xdg-open http://localhost:1337
+
+# TODO: Add a teardown strategy, and clean up likely extraneous files as part of
+# commits.
+# TODO: Figure out how to change ownership of Docker volume for build/ directory
+# to avoid having to use `sudo rm -rf` on host.
+prod-copyfiles:
+	GIT_REPO_ROOT=$(GIT_REPO_ROOT) docker-compose -f $(GIT_REPO_ROOT)/infra-aws/docker-compose.production.yaml --verbose up -d --build copier
+	GIT_REPO_ROOT=$(GIT_REPO_ROOT) docker-compose -f $(GIT_REPO_ROOT)/infra-aws/docker-compose.production.yaml exec copier npm run build
 
 prod-down:
 	GIT_REPO_ROOT=$(GIT_REPO_ROOT) docker-compose -f $(GIT_REPO_ROOT)/infra-aws/docker-compose.production.yaml down -v
@@ -54,5 +62,5 @@ terminate-stack:
 
 # Change $S3_BUCKET_URI as needed.
 export S3_BUCKET_URI ?= dashboard.tinydevcrm.com
-deploy-content:
+deploy-content: prod-copyfiles
 	aws s3 sync ./build s3://$(S3_BUCKET_URI) --profile tinydevcrm-user
