@@ -7,5 +7,16 @@ services:
     build:
       context: ${GIT_REPO_ROOT}
       dockerfile: production.Dockerfile
+      target: server
     ports:
       - 1337:80
+
+  copier:
+    build:
+      context: ${GIT_REPO_ROOT}
+      dockerfile: copyfiles.Dockerfile
+      target: copier
+    volumes:
+      - ${GIT_REPO_ROOT}/build:/app/build
+    ports:
+      - 5000:5000

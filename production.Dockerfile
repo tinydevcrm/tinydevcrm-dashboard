@@ -1,4 +1,4 @@
-# Development Dockerfile to run hotloading server.
+# Production Dockerfile to serve files via nginx.
 #
 # From: https://mherman.org/blog/dockerizing-a-react-app/
 
@@ -27,6 +27,7 @@ COPY . ./
 # Build
 RUN npm run build
 
+# Serve files.
 FROM nginx:1.17.4-alpine AS server
 LABEL application="tinydevcrm-dashboard-prod"
 
