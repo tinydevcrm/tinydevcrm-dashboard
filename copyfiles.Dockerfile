@@ -25,8 +25,5 @@ RUN npm install -g serve
 # Add app
 COPY . ./
 
-# Build
-RUN npm run build
-
 # Copy entrypoint.
 CMD [ "serve", "-s", "build" ]
